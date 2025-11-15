@@ -5,7 +5,7 @@ import 'auth/reset_pwd.dart';
 import 'auth/signup_page.dart';
 import 'mission_dashboard.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'app_localizations.dart';
 
 void main() {
   runApp(MyApp());
@@ -45,12 +45,12 @@ class _MyAppState extends State<MyApp> {
       theme: _isDarkMode ? _darkTheme : _lightTheme,
       locale: _locale,
       localizationsDelegates: [
-        AppLocalizations.delegate,
+        AppLocalizationsDelegate(),  // FIXED: Use our manual delegate
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: [const Locale('en')], // FIXED: Hardcode supported locales
       home: AuthWrapper(),
       onGenerateRoute: _generateRoute,
     );
@@ -67,20 +67,20 @@ class _MyAppState extends State<MyApp> {
           final String token = arguments['token'];
           return MaterialPageRoute(builder: (context) => MissionDashboard(token: token));
         }
-        return _errorRoute(AppLocalizations.of(context)!.errorTokenNotFound);
+        return _errorRoute(AppLocalizations.of(context).errorTokenNotFound); // FIXED: Removed !
       case '/reset_pwd':
         return MaterialPageRoute(builder: (context) => ResetPwd());
       case '/signup_page':
         return MaterialPageRoute(builder: (context) => SignupPage());
       default:
-        return _errorRoute(AppLocalizations.of(context)!.pageNotFound);
+        return _errorRoute(AppLocalizations.of(context).pageNotFound); // FIXED: Removed !
     }
   }
 
   Route<dynamic> _errorRoute(String message) {
     return MaterialPageRoute(builder: (context) {
       return Scaffold(
-        appBar: AppBar(title: Text(AppLocalizations.of(context)!.error)),
+        appBar: AppBar(title: Text(AppLocalizations.of(context).error)), // FIXED: Removed !
         body: Center(child: Text(message)),
       );
     });

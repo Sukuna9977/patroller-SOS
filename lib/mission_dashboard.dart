@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'mission_details.dart';
 import 'SettingsPage.dart';
 import 'profile.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';  // Import localization class
+import 'app_localizations.dart';  // Import localization class
 
 class MissionDashboard extends StatefulWidget {
   final String token;

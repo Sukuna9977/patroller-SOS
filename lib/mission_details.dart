@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'app_localizations.dart';
 
 class MissionDetails extends StatefulWidget {
   final String title;
@@ -40,7 +40,7 @@ class _MissionDetailsState extends State<MissionDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations!.missionDetails),
+        title: Text(localizations.missionDetails),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,

@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'mission_dashboard.dart';
 import 'SettingsPage.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import for localization
+import 'app_localizations.dart'; // Import for localization
 
 class ProfilePage extends StatefulWidget {
   final String token;
